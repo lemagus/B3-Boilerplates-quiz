@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QUIZ POF</title>
+	</head>
+	<body>
+		
+		<div class="block">
+			<h1 class="question" ></h1>
+			<ul class="propositions" >
+				
+			</ul>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		
+		<script type="text/javascript" >
+			
+			var quiz = [
+				{
+					question : 'Est-ce que sandwich est comestible ?',
+					propositions : [
+						{
+							label : "oui",
+							value: false
+						},
+						{
+							label : "non",
+							value: true
+						}
+					]
+				},
+				{
+					question : 'Est-ce que je deviens chauve ?',
+					propositions : [
+						{
+							label : "oui",
+							value: true
+						},
+						{
+							label : "non",
+							value: false
+						}
+					]
+				}
+			];
+			
+		</script>
+		
+		<script >
+			
+			var getQuestion = function(id) {
+				var item = quiz[id];
+				
+				$('.block .question').html(item.question);
+				$('ul.propositions').html('');
+				
+				for(var i in item.propositions) {
+					$('ul.propositions').append(
+						'<li><a data-proposition="' + i + '" data-question="' + id + '" >' + item.propositions[i].label + '</a></li>'
+					);
+				}
+			}
+			
+			$(document).ready(function(){
+				
+				getQuestion(0);
+				
+				$('ul').on('click', 'li a', function(){
+					console.log(this)
+				});
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>
