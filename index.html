@@ -64,10 +64,19 @@
 			
 			$(document).ready(function(){
 				
-				getQuestion(0);
+				getQuestion( Math.floor(Math.random() * quiz.length) );
 				
 				$('ul').on('click', 'li a', function(){
-					console.log(this)
+					var prop = $(this).data('proposition');
+					var question = $(this).data('question');
+					
+					var answer = quiz[question].propositions[prop].value;
+					
+					if(answer) {
+						alert("J'ai raison !");
+					} else {
+						alert("J'ai FAUX !");
+					}
 				});
 				
 			});
